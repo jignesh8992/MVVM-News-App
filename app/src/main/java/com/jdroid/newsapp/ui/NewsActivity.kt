@@ -10,19 +10,17 @@ import com.jdroid.newsapp.databinding.ActivityNewsBinding
 class NewsActivity : AppCompatActivity() {
 
 
-    var mBinding: ActivityNewsBinding? = null
+    lateinit var mBinding: ActivityNewsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mBinding = ActivityNewsBinding.inflate(layoutInflater)
-        setContentView(mBinding?.root)
+        setContentView(mBinding.root)
 
-        mBinding?.let {
-            val navHostFragment = supportFragmentManager.findFragmentById(R.id.newsNavHostFragment) as NavHostFragment
-            val navController = navHostFragment.navController
-            mBinding?.bottomNavigationView!!.setupWithNavController(navController)
-        }
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.newsNavHostFragment) as NavHostFragment
+        val navController = navHostFragment.navController
 
+        mBinding.bottomNavigationView.setupWithNavController(navController)
 
     }
 }
