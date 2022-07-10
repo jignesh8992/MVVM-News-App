@@ -24,17 +24,13 @@ class NewsActivity : AppCompatActivity() {
         setContentView(mBinding.root)
 
         val newsRepository = NewsRepository(NewsDatabase(this))
-        val viewModelProvideFactory = NewsViewModelProvideFactory(newsRepository)
+        val viewModelProvideFactory = NewsViewModelProvideFactory(application, newsRepository)
         viewModel = ViewModelProvider(this, viewModelProvideFactory)[NewsViewModel::class.java]
-
-
 
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.newsNavHostFragment) as NavHostFragment
         val navController = navHostFragment.navController
         mBinding.bottomNavigationView.setupWithNavController(navController)
-
-
 
 
     }

@@ -4,10 +4,11 @@ package com.jdroid.newsapp.api
 import androidx.annotation.Keep
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 @Keep
 data class ResponseNews(
-    val articles: List<Article?>? = null,
+    val articles: MutableList<Article> = ArrayList(),
     val status: String? = null,
     val totalResults: Int? = null
 )
@@ -26,7 +27,7 @@ data class Article(
     val title: String,
     val url: String,
     val urlToImage: String
-)
+) : Serializable
 
 @Keep
 data class Source(
